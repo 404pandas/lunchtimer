@@ -1,7 +1,7 @@
 {
-  "name": "shocase",
+  "name": "lunchtimer",
   "version": "1.0.0",
-  "description": "Anime social media platform",
+  "description": "This project is for UCF's full stack flex coding bootcamp. It will display facts about modules the students are currently on and have a countdown timer to be a visual indicator on when break ends.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/404pandas/Shocase.git"
+    "url": "git+https://github.com/404pandas/lunchtimer.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/404pandas/Shocase/issues"
+    "url": "https://github.com/404pandas/lunchtimer/issues"
   },
-  "homepage": "https://github.com/404pandas/Shocase#readme",
+  "homepage": "https://github.com/404pandas/lunchtimer#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.5",
