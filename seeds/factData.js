@@ -1,6 +1,11 @@
 const { Fact } = require("../models");
 
-const factData = [{}, {}, {}, {}];
+const factData = [
+  { fact_text: "testesetst" },
+  { fact_text: "testesetst" },
+  { fact_text: "testesetst" },
+  { fact_text: "testesetst" },
+];
 
 const seedFacts = () => Fact.bulkCreate(factData);
 
