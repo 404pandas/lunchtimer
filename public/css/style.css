@@ -1,0 +1,1282 @@
+/* ============================================================ *\
+*         Mary Elenius Final Portfolio General Stylesheet         *
+*      https://coolors.co/8cd5cf-fafbfb-4f565d-d5d8d7-000000     *
+*                         05/02/2023                             *
+\* -----------------------------------------------------------  */
+
+/*                     Table of Contents:                       *\
+
+* UNIVERSAL & VARIABLES
+  ## Universal Selectors
+  ## Color Variables
+
+* ELEMENTS
+  ## HTML
+  ## Body
+
+* FLEXBOX
+
+* TYPOGRAPHY 
+  ## Font Family
+  ## Text wrap
+  ## Code blocks
+  ## Header Tags
+
+* COMPONENTS
+ ## Header
+ ## Glitch Shape
+ ## Buttons
+ ## Footer
+
+* HELPERS
+ ## Margin Auto
+
+* MEDIA QUERIES
+ ## 	Mobile Devices <= 600px
+ ## Tablet Devices > 600px
+ ## Desktop Devices > 992px
+ ## Large Desktop Devices > 1200px
+
+/* ============================================================ *\
+*                     Universal & Variables                      *
+\* -----------------------------------------------------------  */
+
+/* --------------      Universal Selectors       -------------- */
+
+/*      Universal- removes padding & margin & set box-sizing    */
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*       Universal- removes text decoration from li and a      */
+li,
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ----------------      Color Variables       ---------------- */
+
+/*       Color variables for easy selection throughout CSS      */
+:root {
+  --light-blue: #8cd5cfff;
+  --dark-blue: #121629;
+  --white: #fafbfbff;
+  --dark-gray: #4f565dff;
+  --light-gray: #d5d8d7ff;
+  --black: #000000ff;
+}
+
+/* ============================================================ *\
+*                           Elements                             *
+\* -----------------------------------------------------------  */
+
+/* html */
+
+html {
+  /* height: 100vh; */
+  color: var(--light-blue) !important;
+  /* todo- add text shadow */
+  background-color: #121629;
+}
+
+/* ---------------------       Body       --------------------- */
+
+/*          Element Selector to apply background color          */
+body {
+  background-image: url("../images/background-image.svg");
+  background-repeat: repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+/* A-hrefs */
+a {
+  color: var(--light-blue) !important;
+}
+
+/* ============================================================ *\
+*                           Flexbox                              *
+\* -----------------------------------------------------------  */
+
+/*                Class selector to apply flexbox                */
+.flexbox {
+  display: flex !important;
+}
+
+/*         Class selector to apply column flex direction         */
+.flexColumn {
+  flex-direction: column;
+}
+
+/*          Class selector to apply row flex direction           */
+.flexRow {
+  flex-direction: row;
+}
+
+.flexNoWrap {
+  flex-wrap: nowrap;
+}
+
+/* ============================================================ *\
+*                          Typography                            *
+\* -----------------------------------------------------------  */
+
+/* -----------------       Font Family       ------------------ */
+
+/* ------------------       Text Wrap       ------------------- */
+
+/*              Class selector to apply text wrap               */
+.text-wrap {
+  /* Since CSS 2.1 */
+  white-space: pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -moz-pre-wrap;
+  /* Opera 4-6 */
+  white-space: -pre-wrap;
+  /* Opera 7 */
+  white-space: -o-pre-wrap;
+  /* Internet Explorer 5 */
+  word-wrap: break-word;
+}
+
+.no-wrap {
+  /* Since CSS 2.1 */
+  white-space: nowrap;
+  /* Mozilla, since 1999 */
+  white-space: -moz-no-wrap;
+  /* Opera 4-6 */
+  white-space: -no-wrap;
+  /* Opera 7 */
+  white-space: -o-no-wrap;
+  /* Internet Explorer 5 */
+  word-wrap: normal;
+}
+
+/* Heading Sizes */
+
+h3 {
+  font-size: 1rem !important;
+  color: var(--black);
+}
+
+h4 {
+  font-size: 0.9rem !important;
+  color: var(--black);
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 0.7rem !important;
+}
+
+/* ============================================================ *\
+*                          Components                            *
+\* -----------------------------------------------------------  */
+
+/* Scanlines */
+/* .scanlines {
+  height: 250vh;
+  background-repeat: repeat-y;
+  overflow: visible !important;
+} */
+
+/* -------------------       Header       --------------------- */
+
+/*        Coding Panda        */
+.panda-coding {
+  position: absolute;
+  min-width: 300px;
+  max-width: 300px;
+  top: 40px;
+  left: 900px;
+}
+
+/*  Name */
+/* Relocated to assets/css/glitch-name.css */
+
+/* ------------------       Sections       -------------------- */
+
+/* Mind the Mess modal */
+
+#messy-panda {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 30px;
+  right: 7%;
+  top: 9px;
+  z-index: 100;
+}
+
+.modal .modal-content {
+  padding: 0px !important;
+  position: relative;
+}
+
+.modal-content h5 {
+  position: relative;
+  width: 175px;
+  font-size: 1.3rem;
+  top: 9px;
+  right: 13px;
+}
+
+#modal-text {
+  position: relative;
+  width: 175px;
+  right: 13px;
+  bottom: -10px;
+  font-size: 0.7rem;
+}
+
+#panda-modal-content {
+  left: 35px;
+  margin-top: 20px;
+}
+#react-btn {
+  font-size: 0.7rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--light-blue);
+}
+#modal1 {
+  background-image: url(../images/mind-the-mess-container.svg);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  max-height: 300px;
+  min-height: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  position: absolute;
+  margin-left: 5%;
+  margin-right: 95%;
+  text-align: center;
+  padding: 0px !important;
+  overflow: hidden;
+  top: 0px;
+  left: 50%;
+}
+
+.modal-footer {
+  position: absolute;
+  bottom: 40px;
+  background-color: rgba(0, 0, 0, 0.524);
+  border-radius: 5px;
+  padding: 6px;
+}
+
+/*  Technologies */
+
+#technologies {
+  background-image: url("../images/technology-container.svg");
+  background-repeat: no-repeat;
+  min-width: 400px !important;
+  max-width: 400px !important;
+  height: 190px;
+  position: absolute;
+  top: 100px;
+  left: 400px;
+}
+
+.carousel-item {
+  opacity: 0.01 !important;
+}
+.carousel-item.active {
+  opacity: 1 !important;
+}
+
+#technology-content {
+  height: 0px;
+  width: 0px;
+}
+
+/* ~~~~~~ Column container (sets height to contain ul) ~~~~~ */
+#column-container {
+  position: relative;
+  height: 20px;
+  width: 215px;
+  top: -52px;
+  left: 6px;
+  z-index: 900;
+}
+
+.indicator {
+  display: none;
+}
+
+/* ~~~~~~ Tab container ~~~~~~ */
+#tab-container {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-y: scroll;
+  background: transparent;
+  /* modal= 1003 */
+  position: absolute;
+  left: 120px;
+  top: 70px;
+  width: 190px;
+  height: 80px;
+}
+
+.tabs-content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+/* ~~~~~~ Fixes line height for the line items ~~~~~~ */
+.user-style-tab {
+  line-height: 20px !important;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 1%;
+  border: 0.1px solid var(--light-blue);
+  z-index: 5000;
+}
+
+.user-style-tab a {
+  text-transform: capitalize;
+}
+
+.user-style-tab:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.tabs-content {
+  overflow: visible;
+}
+
+/* Frameworks and Technologies */
+#tech1 {
+  background-image: url("../images/technology-modal.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  min-height: 180px !important;
+  max-height: 180px !important;
+  left: -190px;
+  top: 80px;
+  width: 200px;
+}
+
+.carousel-slider {
+  width: 10px;
+}
+
+.carousel-item {
+  z-index: -10 !important;
+}
+
+.carousel-item.active {
+  z-index: 1600 !important;
+}
+
+#technology-z-index {
+  z-index: -20 !important;
+  width: 1px;
+}
+
+#tech1 h4 {
+  position: relative;
+  top: 12px;
+  left: 30px;
+}
+
+#tech1 ul {
+  position: absolute;
+  height: 80px;
+  width: 125px;
+  overflow: hidden;
+  overflow-y: scroll;
+  z-index: 3000;
+  top: 45px !important;
+  left: 26px;
+}
+
+/* Databases */
+#tech2 {
+  background-image: url("../images/technology-modal-2.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -65px;
+  left: -190px;
+  min-height: 180px;
+  max-height: 180px;
+  z-index: 1500;
+  width: 200px;
+}
+
+#tech2 h4 {
+  position: absolute;
+  top: 4px;
+  left: 25px;
+}
+
+#tech2 ul {
+  position: absolute;
+  left: 50px;
+  top: 34px;
+  height: 80px;
+  width: 110px;
+  overflow: hidden;
+}
+
+#tech2 i {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+/* Languages */
+#tech3 {
+  background-image: url("../images/technology-modal-3.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 84px;
+  left: -192px;
+  min-height: 180px;
+  max-height: 180px;
+  width: 200px;
+}
+
+#tech3 h4 {
+  position: absolute;
+  top: 30px;
+  left: 35px;
+  color: var(--light-blue);
+}
+
+#tech3 ul {
+  position: absolute;
+  left: 50px;
+  top: 62px;
+  height: 48px;
+  width: 120px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#tech3 i {
+  position: absolute;
+  right: 28px;
+  top: 23px;
+}
+
+/* Other Tools */
+#tech4 {
+  background-image: url("../images/technology-modal-4.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -193px;
+  top: -30px;
+  min-height: 180px;
+  max-height: 180px;
+  visibility: visible;
+  width: 220px;
+}
+
+#tech4 h4 {
+  position: absolute;
+  top: 3px;
+  right: 42px;
+}
+
+#tech4 ul {
+  position: absolute;
+  left: 26px;
+  top: 22px;
+  height: 63px;
+  width: 125px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#tech4 i {
+  position: absolute;
+  top: 20px;
+  right: 47px;
+}
+
+/* About Me */
+#about-me {
+  background-image: url("../images/about-me-container.svg");
+  background-repeat: no-repeat;
+  min-height: 300px;
+  max-height: 300px;
+  width: 320px;
+  position: absolute;
+  left: 80px;
+  top: 400px;
+  z-index: 0 !important;
+}
+
+#about-me h3 {
+  position: absolute;
+  top: 17px;
+  left: 60px;
+}
+
+#about-me img {
+  background-image: url("../images/MaryEleniusProfilePic.jpeg");
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 34px;
+  top: 60px;
+  height: 50px;
+  width: 50px;
+}
+
+#about-me ul {
+  position: absolute;
+  top: 58px;
+  left: 100px;
+  height: 50px;
+  font-size: 0.6rem;
+}
+
+#top-list {
+  margin: 2px;
+}
+
+#bottom-list {
+  margin: 2px;
+}
+
+#section-content div#about-p-tags {
+  position: absolute;
+  left: 30px;
+  top: 140px;
+  width: 140px;
+  height: 120px;
+  overflow: hidden;
+  overflow-y: scroll;
+  font-size: 0.8rem;
+}
+
+/* Contact */
+#contact {
+  background-image: url("../images/contact-container.svg");
+  background-repeat: no-repeat;
+  min-height: 300px;
+  max-height: 300px;
+  position: absolute;
+  width: 400px;
+  left: 980px;
+  top: 400px;
+}
+
+#contact h3 {
+  position: absolute;
+  top: 3px;
+  left: 70px;
+}
+
+#contact-ul {
+  display: flex;
+  position: absolute;
+  white-space: normal;
+  width: 200px;
+  top: 100px;
+  left: 80px;
+  font-size: 0.8rem;
+  -webkit-column-count: 2; /* Chrome/Opera, Safari */
+  -moz-column-count: 2; /* Mozilla Firefox */
+  column-count: 2;
+  vertical-align: middle;
+  list-style: none;
+  justify-content: space-between;
+}
+
+#contact li {
+  display: flex;
+  vertical-align: middle;
+}
+#contact li a {
+  display: flex;
+}
+#contact li a p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contact-content {
+  position: absolute;
+  top: 0px;
+}
+
+#contact-icon {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  border: 1px solid var(--light-blue);
+  align-items: center;
+  height: 40px;
+}
+
+div#contact-content a.btn {
+  height: 35px;
+  width: 180px;
+  position: absolute;
+  top: 160px;
+  left: 66px;
+  text-align: center;
+  margin-left: 15px;
+}
+
+/* ~~~ Contact Form Modal ~~~~ */
+
+#modal2 {
+  background-color: #121629;
+  border: 1px solid var(--light-blue);
+  border-radius: 5px;
+}
+
+.modal-content h2 {
+  margin: 10px;
+}
+
+#contact-area {
+  width: 600px;
+  margin-top: 0px;
+  padding: 20px;
+  padding-top: 0px;
+  z-index: 1900;
+}
+
+.modal-content p {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+#contact-area input,
+#contact-area textarea {
+  padding: 5px;
+  width: 471px;
+  font-family: Helvetica, sans-serif;
+  font-size: 1.4em;
+  margin: 0px 0px 10px 0px;
+  border: 1px solid var(--light-blue);
+  z-index: 1900;
+  color: var(--light-blue);
+}
+
+#contact-area textarea {
+  height: 90px;
+  z-index: 1900;
+}
+
+#contact-area textarea:focus,
+#contact-area input:focus {
+  border: 1px solid var(--white);
+  z-index: 1900;
+}
+
+#contact-area input.submit-button {
+  width: 100px;
+  z-index: 1900;
+  background-color: #121629;
+  color: var(--light-blue);
+}
+
+label {
+  float: left;
+  text-align: left;
+  margin-right: 15px;
+  margin-left: 5px;
+  width: 100px;
+  padding-top: 5px;
+  font-size: 1.4em;
+  z-index: 1900;
+  color: var(--light-blue);
+}
+
+#modal-p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Resume */
+#resume {
+  background-image: url("../images/resume-container.svg");
+  background-repeat: no-repeat;
+  min-height: 30%;
+  width: auto;
+  position: absolute;
+  right: 7%;
+  bottom: 2%;
+  display: none !important;
+}
+
+#resume-download-container {
+  position: absolute;
+  top: 32px;
+  left: 200px;
+  text-align: center;
+  line-height: 15px;
+}
+
+/* Work */
+#work {
+  background-image: url("../images/work-container.svg");
+  background-repeat: no-repeat;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  width: 400px;
+  position: absolute !important;
+  left: 500px;
+  top: 450px;
+}
+
+ul#work-ul {
+  position: absolute;
+  left: 150px;
+  top: 40px;
+  height: 50px;
+  width: 100px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.work {
+  position: absolute;
+  top: 100px;
+  right: 80px;
+  width: 152px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.specific-work-ul {
+  columns: 4;
+  font-size: 0.6rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  list-style-type: circle;
+}
+
+.work span {
+  line-height: 16px;
+  font-size: 0.6rem;
+}
+
+.work li {
+  line-height: 16px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.work h4 {
+  line-height: 16px !important;
+  margin: 5px;
+  left: 100px;
+  color: var(--light-blue);
+}
+
+.work h5 {
+  line-height: 16px !important;
+  margin: 5px;
+}
+
+.work-links {
+  justify-content: flex-end;
+}
+.tabs {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-x: visible;
+  overflow-y: visible;
+  background: transparent;
+  /* modal= 1003 */
+  position: absolute;
+  left: 100px;
+  top: 5px;
+  width: 190px;
+}
+
+.tabs-content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+/* name effect */
+.textEffect-container {
+  position: absolute;
+  left: 850px;
+  top: 180px;
+}
+
+.textEffect {
+  color: #fafbfbff;
+  position: relative;
+  white-space: nowrap;
+  letter-spacing: 0.15rem;
+  bottom: -80px;
+  left: 100px;
+  font-size: 4rem;
+  width: 300px;
+  animation: textEffect 10s 10s infinite;
+}
+
+.textEffect::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: -5px 0 #000000ff;
+  overflow: hidden;
+  top: 0;
+  animation: noise-1 5s linear infinite alternate-reverse,
+    textEffect 10 10.05s infinite;
+}
+
+.textEffect::after {
+  content: attr(data-text);
+  position: absolute;
+  white-space: nowrap;
+  left: 2px;
+  text-shadow: -5px 0 #8cd5cf;
+  top: 0;
+  animation: noise-2 5s linear infinite alternate-reverse,
+    textEffect 10s 10s infinite;
+}
+
+@keyframes textEffect {
+  1% {
+    transform: rotateX(10deg) skewX(90deg);
+  }
+  2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+@keyframes noise-1 {
+  3.3333333333% {
+    clip-path: inset(91px 0 9px 0);
+  }
+  6.6666666667% {
+    clip-path: inset(25px 0 71px 0);
+  }
+  10% {
+    clip-path: inset(91px 0 4px 0);
+  }
+  13.3333333333% {
+    clip-path: inset(9px 0 56px 0);
+  }
+  16.6666666667% {
+    clip-path: inset(59px 0 6px 0);
+  }
+  20% {
+    clip-path: inset(26px 0 58px 0);
+  }
+  23.3333333333% {
+    clip-path: inset(2px 0 62px 0);
+  }
+  26.6666666667% {
+    clip-path: inset(68px 0 27px 0);
+  }
+  30% {
+    clip-path: inset(31px 0 62px 0);
+  }
+  33.3333333333% {
+    clip-path: inset(18px 0 44px 0);
+  }
+  36.6666666667% {
+    clip-path: inset(40px 0 54px 0);
+  }
+  40% {
+    clip-path: inset(3px 0 20px 0);
+  }
+  43.3333333333% {
+    clip-path: inset(93px 0 8px 0);
+  }
+  46.6666666667% {
+    clip-path: inset(41px 0 24px 0);
+  }
+  50% {
+    clip-path: inset(25px 0 70px 0);
+  }
+  53.3333333333% {
+    clip-path: inset(27px 0 39px 0);
+  }
+  56.6666666667% {
+    clip-path: inset(83px 0 10px 0);
+  }
+  60% {
+    clip-path: inset(60px 0 16px 0);
+  }
+  63.3333333333% {
+    clip-path: inset(75px 0 25px 0);
+  }
+  66.6666666667% {
+    clip-path: inset(31px 0 40px 0);
+  }
+  70% {
+    clip-path: inset(44px 0 12px 0);
+  }
+  73.3333333333% {
+    clip-path: inset(17px 0 58px 0);
+  }
+  76.6666666667% {
+    clip-path: inset(20px 0 66px 0);
+  }
+  80% {
+    clip-path: inset(87px 0 13px 0);
+  }
+  83.3333333333% {
+    clip-path: inset(22px 0 28px 0);
+  }
+  86.6666666667% {
+    clip-path: inset(74px 0 1px 0);
+  }
+  90% {
+    clip-path: inset(44px 0 7px 0);
+  }
+  93.3333333333% {
+    clip-path: inset(2px 0 48px 0);
+  }
+  96.6666666667% {
+    clip-path: inset(73px 0 13px 0);
+  }
+  100% {
+    clip-path: inset(60px 0 37px 0);
+  }
+}
+@keyframes noise-2 {
+  0% {
+    clip-path: inset(100px 0 1px 0);
+  }
+  3.3333333333% {
+    clip-path: inset(87px 0 12px 0);
+  }
+  6.6666666667% {
+    clip-path: inset(73px 0 18px 0);
+  }
+  10% {
+    clip-path: inset(79px 0 4px 0);
+  }
+  13.3333333333% {
+    clip-path: inset(25px 0 40px 0);
+  }
+  16.6666666667% {
+    clip-path: inset(33px 0 22px 0);
+  }
+  20% {
+    clip-path: inset(31px 0 56px 0);
+  }
+  23.3333333333% {
+    clip-path: inset(82px 0 19px 0);
+  }
+  26.6666666667% {
+    clip-path: inset(8px 0 23px 0);
+  }
+  30% {
+    clip-path: inset(80px 0 17px 0);
+  }
+  33.3333333333% {
+    clip-path: inset(39px 0 9px 0);
+  }
+  36.6666666667% {
+    clip-path: inset(55px 0 6px 0);
+  }
+  40% {
+    clip-path: inset(34px 0 9px 0);
+  }
+  43.3333333333% {
+    clip-path: inset(34px 0 13px 0);
+  }
+  46.6666666667% {
+    clip-path: inset(1px 0 22px 0);
+  }
+  50% {
+    clip-path: inset(35px 0 55px 0);
+  }
+  53.3333333333% {
+    clip-path: inset(28px 0 3px 0);
+  }
+  56.6666666667% {
+    clip-path: inset(3px 0 85px 0);
+  }
+  60% {
+    clip-path: inset(17px 0 26px 0);
+  }
+  63.3333333333% {
+    clip-path: inset(21px 0 79px 0);
+  }
+  66.6666666667% {
+    clip-path: inset(31px 0 38px 0);
+  }
+  70% {
+    clip-path: inset(52px 0 48px 0);
+  }
+  73.3333333333% {
+    clip-path: inset(64px 0 7px 0);
+  }
+  76.6666666667% {
+    clip-path: inset(83px 0 7px 0);
+  }
+  80% {
+    clip-path: inset(29px 0 14px 0);
+  }
+  83.3333333333% {
+    clip-path: inset(8px 0 42px 0);
+  }
+  86.6666666667% {
+    clip-path: inset(71px 0 25px 0);
+  }
+  90% {
+    clip-path: inset(17px 0 69px 0);
+  }
+  93.3333333333% {
+    clip-path: inset(21px 0 60px 0);
+  }
+  96.6666666667% {
+    clip-path: inset(56px 0 18px 0);
+  }
+  100% {
+    clip-path: inset(80px 0 15px 0);
+  }
+}
+
+.scanlines {
+  overflow: visible;
+  mix-blend-mode: difference;
+  height: 100vh;
+  background-repeat: repeat-y;
+}
+
+.scanlines::before {
+  overflow: visible;
+
+  height: 100vh !important;
+  background-repeat: repeat;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 0.5%,
+    transparent 1%
+  );
+
+  animation: fudge 7s ease-in-out alternate infinite;
+}
+
+@keyframes fudge {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(0px, 2%);
+  }
+}
+
+.glow {
+  @extend .textEffect;
+  text-shadow: 0 0 1000px rgb(223, 191, 191);
+  color: transparent;
+  position: absolute;
+  top: 0;
+}
+
+.subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 0.8vw;
+  color: rgba(165, 141, 141, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1em;
+  text-align: center;
+  position: absolute;
+  left: 17%;
+  animation: textEffect-2 5s 5.02s infinite;
+}
+
+@keyframes textEffect-2 {
+  1% {
+    transform: rotateX(10deg) skewX(70deg);
+  }
+  2% {
+    transform: rotateX(0deg) skewX(0deg);
+  }
+}
+
+/* ~~~~~~ Fixes line height for the line items ~~~~~~ */
+.tabs {
+  line-height: 20px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  margin: 1%;
+  border: 0.1px solid var(--light-blue);
+  z-index: 5000;
+  height: 40px;
+  width: 125px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.user-style-tab a span {
+  text-transform: capitalize;
+}
+
+.user-style-tab:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.tabs-content {
+  overflow: visible;
+}
+
+span.work-list-text {
+  margin: 0px;
+  font-size: 0.7rem;
+}
+
+#work-tabs.tabs {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+#work #section-content ul.tabs {
+  width: 110px;
+  position: absolute !important;
+  top: 45px !important;
+  left: 165px !important;
+  margin-bottom: 50px;
+}
+
+#wwork-tabs {
+  left: 387px;
+}
+ul.tabs {
+  z-index: 900;
+  background: rgba(255, 255, 255, 0.1);
+}
+ul.tabs:hover {
+  z-index: 900;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Extra */
+#extra {
+  background-image: url("../images/extra-container.svg");
+  background-repeat: no-repeat;
+  min-height: 40%;
+  position: absolute;
+  left: 8%;
+  bottom: 5%;
+}
+
+.textEffect-container {
+  right: 10px;
+}
+
+#close-button {
+  margin: 0px 20px;
+}
+
+#work-carousel {
+  position: absolute;
+  left: 385px;
+}
+
+/* -------------------       Footer       --------------------- */
+
+/* -------------------       Button       --------------------- */
+
+/* ============================================================ *\
+*                           Helpers                              *
+\* -----------------------------------------------------------  */
+
+.hidden {
+  display: none !important;
+}
+
+.row {
+  margin-bottom: 0px !important;
+}
+
+/* ============================================================ *\
+*      Media Queries (Alphabetical by screen size break          *
+\* -----------------------------------------------------------  */
+
+/* ----------       Mobile Devices <= 600px S       ------------ */
+
+@media only screen and (max-width: 599px) {
+  #panda-and-name {
+    position: absolute;
+    top: 0px;
+    left: 15%;
+  }
+  .panda-coding {
+    left: 0px;
+  }
+  .textEffect-container {
+    left: 0px !important;
+  }
+  .textEffect {
+    font-size: 3rem;
+    left: 0px;
+  }
+  #technologies {
+    left: 4%;
+    top: 730px;
+  }
+  #technologies .tabs-content {
+    top: 100px;
+    left: 265px;
+  }
+  #tech2 {
+    top: 150px;
+  }
+  #work {
+    left: 4%;
+    top: 1050px;
+  }
+  #work-tabs {
+    font-size: 10px !important;
+    margin: 0;
+  }
+  #contact {
+    left: 4%;
+    top: 1315px;
+  }
+  #modal1 {
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.336);
+  }
+}
+
+/* ----------       Tablet Devices > 600px M      ------------- */
+
+@media only screen and (max-width: 600px) {
+}
+
+/* ----------       Desktop Devices > 992px L     ------------- */
+
+@media only screen and (max-width: 992px) {
+}
+
+/* ------       Large Desktop Devices > 1200px  XL      ------ */
+
+@media only screen and (max-width: 1200px) {
+}
+
+/* ============================================================ *\
+*                        Example Heading                         *
+\* -----------------------------------------------------------  */
+
+/* -------------       Example Sub-Heading       --------------- */

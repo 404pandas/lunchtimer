@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LunchTimer</title>
+   <link rel="stylesheet" href="../../public/css/normalize.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<header>
+  <nav>
+  <ul>
+    <li>
+      <div>
+        <a href="/">LunchTimer</a>
+        {{#if loggedIn}}
+        <a><span>{{currentUser.username}}</span></a>
+      </div>
+    </li>
+    <li><a href="/">Logout</a></li>
+    {{else}} 
+    <br>
+    <li><a href="/login">Login/Signup</a></li>
+    {{/if}}
+    <li><a href="/facts">Facts</a></li>
+    <li><a href="#!">Close</a></li>
+  </ul>
+  </nav>
+</header>
+
+
+<body>
+
+  <main>
+
+    {{{ body }}}
+  </main>
+
+  <!-- Render script for logged in users only -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
