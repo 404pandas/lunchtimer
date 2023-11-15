@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const { Comment } = require("../../models/");
-const withAuth = require("../../utils/auth");
 
 // The /api/comments endpoint
 
 // Find all comments
 router.get("/", async (req, res) => {
   try {
-    const commentData = await Comment.findAll();
+    const commentData = await Comment.findAll({
+      include: [{ model: Fact }],
+    });
     res.status(200).json(commentData);
   } catch (err) {
     res.status(500).json(err);
@@ -17,12 +18,13 @@ router.get("/", async (req, res) => {
 // Find one comment
 router.get("/:id", async (req, res) => {
   try {
-    const commentData = await Comment.findByPk(req.params.id);
-
-    if (!commentData) {
-      res.status(404).json({ message: "No comment found!" });
-      return;
-    }
+    const commentData = await Comment.findByPk(req.params.id, {
+      include: [
+        {
+          model: Fact,
+        },
+      ],
+    });
 
     res.status(200).json(commentData);
   } catch (err) {
@@ -31,7 +33,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create comment
-router.post("/", async (req, res) => {
+router.post("/:id", async (req, res) => {
   try {
     const commentData = await Comment.create(req.body);
     res.status(200).json(commentData);
@@ -46,11 +48,6 @@ router.put("/:id", async (req, res) => {
     const commentData = await Comment.update(req.body, {
       where: { id: req.params.id },
     });
-
-    if (!commentData) {
-      res.status(404).json({ message: "No comment found!" });
-      return;
-    }
 
     res
       .status(200)

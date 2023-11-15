@@ -1,91 +1,54 @@
 const router = require("express").Router();
-const { Playlist, Comment, User, Anime, Favorites } = require("../models");
+const { Comment, Fact, User } = require("../models");
 const withAuth = require("../utils/auth");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
-// get all playlists for homepage
+// get all facts for homepage
 router.get("/", async (req, res) => {
   try {
-    // Get all posts and JOIN with user data
+    // Get all comments with user data
     if (req.session.user_id) {
-      const playlistData = await Playlist.findAll({
-        include: [{ model: User }, { model: Anime }, { model: Favorites }],
-        attributes: {
-          include: [
-            [
-              Sequelize.literal(`(
-                                SELECT COUNT(*)
-                                FROM Favorites AS favorites
-                                WHERE
-                                    playlist.id = playlist_id
-                            )`),
-              "favoritesCount",
-            ],
-            [
-              Sequelize.literal(`(
-                                SELECT COUNT(*) FROM Favorites AS checks WHERE playlist.id = playlist_id AND ${req.session.user_id} = user_id
-                            )`),
-              "hasFavorited",
-            ],
-          ],
-        },
+      const factData = await Fact.findAll({
+        include: [{ model: User }, { model: Fact }, { model: Comment }],
+        attributes: {},
       });
-      const playlistsU = playlistData.map((playlist) =>
-        playlist.get({ plain: true })
-      );
 
-      const playlists = playlistsU.reverse()
-
-      const favoritesData = await Favorites.findAll({
+      const commentData = await Comment.findAll({
         where: {
           user_id: req.session.user_id,
         },
       });
 
-      const favorites = favoritesData.map((favorite) =>
-        favorite.get({ plain: true })
-      );
-
       const currentUser = {
         user_id: req.session.user_id,
         email: req.session.email,
-        avatar: req.session.avatar,
-        username: req.session.username
-      }
-
-      res.render("all-playlists", {
-        currentUser,
-        favorites,
-        playlists,
-        loggedIn: req.session.loggedIn,
-      });
+        username: req.session.username,
+      };
     } else {
-      const playlistData = await Playlist.findAll({
-        include: [{ model: User }, { model: Anime }, { model: Favorites }],
+      const factData = await Fact.findAll({
+        include: [{ model: User }, { model: Fact }, { model: Comment }],
         attributes: {
           include: [
             [
               Sequelize.literal(`(
                             SELECT COUNT(*)
-                            FROM Favorites AS favorites
+                            FROM Comments AS comments
                             WHERE
-                                playlist.id = playlist_id
+                                fact.id = fact_id
                         )`),
 
-              "favoritesCount",
+              "commentCount",
             ],
           ],
         },
       });
-      const playlistsU = playlistData.map((playlist) =>
-        playlist.get({ plain: true })
-      );
+      const factsU = factData.map((fact) => fact.get({ plain: true }));
 
-      const playlists = playlistsU.reverse()
+      const facts = factsU.reverse();
 
-      res.render("all-playlists", {
-        playlists,
+      res.render("all-facts", {
+        facts,
         loggedIn: req.session.loggedIn,
       });
     }
@@ -94,107 +57,63 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get playlists by search
-router.get("/playlists/search/:search", withAuth, async (req, res) => {
+// get single fact by id
+router.get("/fact/:id", withAuth, async (req, res) => {
   try {
-    const playlistData = await Playlist.findAll({
-      where: { title: { [Op.like]: "%" + req.params.search + "%" } },
-      include: [{ model: User }, { model: Anime }, { model: Favorites }],
-        attributes: {
-          include: [
-            [
-              Sequelize.literal(`(
+    const factData = await Fact.findByPk(req.params.id, {
+      include: [
+        { model: User },
+        { model: Comment },
+        { model: Fact },
+        { model: Comment, include: [{ model: User }] },
+      ],
+      attributes: {
+        include: [
+          [
+            Sequelize.literal(`(
                                 SELECT COUNT(*)
-                                FROM Favorites AS favorites
+                                FROM Fact AS fact
                                 WHERE
-                                    playlist.id = playlist_id
+                                    fact.id = fact_id
                             )`),
-              "favoritesCount",
-            ],
-            [
-              Sequelize.literal(`(
-                                SELECT COUNT(*) FROM Favorites AS checks WHERE playlist.id = playlist_id AND ${req.session.user_id} = user_id
-                            )`),
-              "hasFavorited",
-            ],
+            "factsCount",
           ],
-        },
+          [
+            Sequelize.literal(`(
+                                SELECT COUNT(*) FROM Facts AS checks WHERE fact.id = fact_id AND ${req.session.user_id} = user_id
+                            )`),
+            "hasCommented",
+          ],
+        ],
+      },
     });
-    console.log(playlistData)
-    const playlistsU = playlistData.map((playlist) =>
-      playlist.get({ plain: true })
-    );
+    const fact = factData.get({ plain: true });
 
-    const playlists = playlistsU.reverse()
+    const commentsData = await Comment.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
+    const comments = commentsData.map((comment) =>
+      comment.get({ plain: true })
+    );
 
     const currentUser = {
       user_id: req.session.user_id,
       email: req.session.email,
       avatar: req.session.avatar,
-      username: req.session.username
-    }
+      username: req.session.username,
+    };
 
-    res.render("playlist-search", {
+    res.render("single-comment", {
       currentUser,
-      playlists,
+      comments,
+      fact,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
   }
-});
-
-// get single playlist by id
-router.get('/playlist/:id', withAuth, async (req, res) => {
-    try {
-        const playlistData = await Playlist.findByPk(req.params.id, {
-            include: [{ model: User }, { model: Anime }, { model: Favorites }, { model: Comment, include: [{ model: User }] }],
-            attributes: {
-                include: [
-                    [
-                        Sequelize.literal(`(
-                                SELECT COUNT(*)
-                                FROM Favorites AS favorites
-                                WHERE
-                                    playlist.id = playlist_id
-                            )`),
-                        'favoritesCount'
-                    ],
-                    [
-                        Sequelize.literal(`(
-                                SELECT COUNT(*) FROM Favorites AS checks WHERE playlist.id = playlist_id AND ${req.session.user_id} = user_id
-                            )`),
-                        'hasFavorited'
-                    ]
-                ]
-            }
-        });
-        const playlist = playlistData.get({ plain: true });
-
-        const favoritesData = await Favorites.findAll({
-            where: {
-                user_id: req.session.user_id
-            }
-        });
-        const favorites = favoritesData.map((favorite) => favorite.get({ plain: true }));
-
-        const currentUser = {
-          user_id: req.session.user_id,
-          email: req.session.email,
-          avatar: req.session.avatar,
-          username: req.session.username
-        }
-
-        res.render('single-playlist', {
-            currentUser,
-            favorites,
-            playlist,
-            loggedIn: req.session.loggedIn
-        });
-
-    } catch (err) {
-        res.status(500).json(err);
-    }
 });
 
 router.get("/login", (req, res) => {
@@ -205,33 +124,17 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/create-playlists", withAuth, (req, res) => {
-
+router.get("/create-comments", withAuth, (req, res) => {
   const currentUser = {
     user_id: req.session.user_id,
     email: req.session.email,
-    avatar: req.session.avatar,
-    username: req.session.username
-  }
+    username: req.session.username,
+  };
 
-  res.render("create-playlists", {
-    currentUser,
-    loggedIn: req.session.loggedIn
-  });
-});
-
-router.get("/about-us", (req, res) => {
-
-  const currentUser = {
-    user_id: req.session.user_id,
-    email: req.session.email,
-    avatar: req.session.avatar,
-    username: req.session.username
-  }
-
-  res.render("about-us", {
+  res.render("create-comments", {
     currentUser,
     loggedIn: req.session.loggedIn,
   });
 });
+
 module.exports = router;
